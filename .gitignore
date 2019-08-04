@@ -1,0 +1,11 @@
+.vscode
+.vscode/*
+CMakeFiles/*
+*.so
+*.a
+*.cmake
+CMakeCache.txt
+Makefile
+tcp_telemetry_test
+udp_telemetry_test
+tcp_vpe_sender
