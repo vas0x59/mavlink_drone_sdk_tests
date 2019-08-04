@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 project (Mavilink_Indoor_SDK)
 
 include_directories("./src")
-include_directories("./mavlink/v2.0/common")
+include_directories("./mavlink_indoor_sdk/mavlink/v2.0/common")
 
 # Markers
 include_directories("./markers_lib/src")
