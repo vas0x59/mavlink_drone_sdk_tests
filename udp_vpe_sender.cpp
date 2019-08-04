@@ -77,14 +77,14 @@ void init_marker_reg()
     imwrite(map_jpeg, map_img);
 }
 
-TCP_Protocol *lw_proto;
+UDP_Protocol *lw_proto;
 
 int main()
 {
     load_config();
     init_marker_reg();
 
-    lw_proto = new TCP_Protocol("tcp://127.0.0.1:5761");
+    lw_proto = new UDP_Protocol("udp://127.0.0.1:14510");
     lw_proto->start();
 
     VideoCapture cap(cam_id);
