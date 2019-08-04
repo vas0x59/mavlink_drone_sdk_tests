@@ -84,7 +84,7 @@ int main()
     load_config();
     init_marker_reg();
 
-    lw_proto = &TCP_Protocol("tcp://127.0.0.1:5761");
+    lw_proto = new TCP_Protocol("tcp://127.0.0.1:5761");
     lw_proto->start();
 
     VideoCapture cap(cam_id);
