@@ -1,0 +1,6 @@
+[submodule "mavlink_indoor_sdk"]
+	path = mavlink_indoor_sdk
+	url = https://github.com/vas59/mavlink_indoor_sdk.git
+[submodule "markers_lib"]
+	path = markers_lib
+	url = https://github.com/vas59/markers_lib.git
