@@ -77,18 +77,20 @@ void init_marker_reg()
     imwrite(map_jpeg, map_img);
 }
 
+TCP_Protocol *lw_proto;
+
 int main()
 {
     load_config();
     init_marker_reg();
 
-    TCP_Protocol lw_proto("tcp://127.0.0.1:5761");
-    lw_proto.start();
+    lw_proto = &TCP_Protocol("tcp://127.0.0.1:5761");
+    lw_proto->start();
 
     VideoCapture cap(cam_id);
     while (true)
     {
-        if (lw_proto.status == 1)
+        if (lw_proto->status == 1)
         {
             mavlink_message_t msg;
             mavlink_vision_position_estimate_t vpe;
@@ -106,9 +108,9 @@ int main()
             vpe.yaw = vd.pose.rotation.z;
 
             mavlink_msg_vision_position_estimate_encode(12, MAV_COMP_ID_ALL, &msg, &vpe);
-            lw_proto.write_message(msg);
+            lw_proto->write_message(msg);
             usleep(10000);
         }
     }
-    lw_proto.stop();
+    lw_proto->stop();
 }

@@ -10,6 +10,8 @@ include_directories("./markers_lib/src")
 #SDK
 include_directories("./mavlink_indoor_sdk/src")
 
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+
 add_executable(tcp_telemetry_test tcp_telemetry_test.cpp)
 add_executable(udp_telemetry_test udp_telemetry_test.cpp)
 

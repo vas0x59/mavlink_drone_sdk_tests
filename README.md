@@ -1,1 +1,2 @@
-# mavlink_indoor_sdk
+# MAVLINK SDK for indoor drones
+
