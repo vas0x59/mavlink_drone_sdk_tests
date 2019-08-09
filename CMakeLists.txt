@@ -39,3 +39,24 @@ target_link_libraries(udp_vpe_sender
     ${PROJECT_SOURCE_DIR}/markers_lib/libmarkers_lib.so
     ${OpenCV_LIBS}
 )
+
+
+#zmq
+
+
+# pkg_check_modules(PC_ZeroMQ QUIET zmq)
+# find_path(ZeroMQ_INCLUDE_DIR
+#     NAMES zmq.hpp
+#     PATHS ${PC_ZeroMQ_INCLUDE_DIRS}
+# )
+
+# ## use the hint from about to find the location of libzmq
+# find_library(ZeroMQ_LIBRARY
+#     NAMES zmq
+#     PATHS ${PC_ZeroMQ_LIBRARY_DIRS}
+# )
+# add_executable(zmq_copter zmq_copter.cpp)
+
+# target_include_directories(zmq_copter ${ZeroMQ_INCLUDE_DIR})
+# ## at the 0mq library to our link directive
+# target_link_libraries(zmq_copter ${ZeroMQ_LIBRARY})
