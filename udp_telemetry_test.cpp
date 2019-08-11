@@ -23,7 +23,7 @@ int main(){
     drone.sleep(1000);
     // drone.set_position({0, 1, 2, 0}, FRAME_VISION);
     drone.navigate_wait({0, 0, 2, 0}, FRAME_LOCAL, 0.5);
-    drone.navigate_wait({2, 2, 2, 0}, FRAME_LOCAL, 0.5);
+    drone.navigate_wait({2, 2, 2, 1.5}, FRAME_LOCAL, 0.5);
     // drone.sleep(10000);
     // // drone.set_position({0, 1, 2, 0}, FRAME_VISION);
     // drone.navigate({-2, -2, 2, 0}, FRAME_LOCAL, 0.5);
