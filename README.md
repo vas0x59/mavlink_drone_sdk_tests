@@ -2,6 +2,12 @@
 
 Examples for mavlink_indoor_sdk
 
+## Install dependencies
+Build and install [mavlink-router](https://github.com/intel/mavlink-router)
+
+## Build dependencies
+mavlink_indoor_sdk and markers_lib
+
 ## Build
 ```bash
 cmake .
