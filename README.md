@@ -9,6 +9,6 @@ make
 ```
 
 ## Description
-udp/tcp_telemtry_test.cpp - connection and commands ( telemetry ) tests
-udp_vpe_sender.cpp - send VPE data to autopilot
+udp/tcp_telemtry_test.cpp - connection and commands ( telemetry ) tests\
+udp_vpe_sender.cpp - send VPE data to autopilot\
 start_router.sh - start [mavlink-router](https://github.com/intel/mavlink-router)
