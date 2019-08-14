@@ -6,7 +6,7 @@ Examples for [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
 Build and install [mavlink-router](https://github.com/intel/mavlink-router)
 
 ## Build dependencies
-mavlink_indoor_sdk and markers_lib
+[mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk) and [markers_lib](https://github.com/vas59/markers_lib)
 
 ## Build
 ```bash
