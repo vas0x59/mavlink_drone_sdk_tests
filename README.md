@@ -1,6 +1,6 @@
 # MAVLINK SDK for indoor drones
 
-Examples for mavlink_indoor_sdk
+Examples for [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
 
 ## Install dependencies
 Build and install [mavlink-router](https://github.com/intel/mavlink-router)
