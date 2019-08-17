@@ -28,6 +28,6 @@ start_router.sh - start [mavlink-router](https://github.com/intel/mavlink-router
  - [led_uart_ws2812_arduino](https://github.com/vas59/led_uart_ws2812_arduino) - ws2812(arduino) control over uart
  - [PX4 Firmware](https://github.com/vas59/PX4_Firmware) - version of px4 for Spurk
  - [ESP32 mqtt swarm control](https://github.com/vas59/mavlink_indoor_sdk_esp32_test1) - ESP32 version of [vas59/mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
-
+ - [Prebuilded](https://github.com/vas59/raspberrypi_prebuilded/releases)
 ***
 by Vasily Yuryev
