@@ -10,3 +10,4 @@ tcp_telemetry_test
 udp_telemetry_test
 tcp_vpe_sender
 udp_vpe_sender
+build*/
