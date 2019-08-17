@@ -4,3 +4,6 @@
 [submodule "markers_lib"]
 	path = markers_lib
 	url = https://github.com/vas59/markers_lib.git
+[submodule "opencv_image_transfer"]
+	path = opencv_image_transfer
+	url = https://github.com/vas59/opencv_image_transfer.git
