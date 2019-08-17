@@ -23,13 +23,13 @@ add_executable(udp_vpe_sender udp_vpe_sender.cpp)
 # add_executable(hwer hwer.cpp)
 target_link_libraries(tcp_telemetry_test
     #mavlink_indoor_sdk
-    ${PROJECT_SOURCE_DIR}/mavlink_indoor_sdk/libmavlink_indoor_sdk.so
+    ${PROJECT_SOURCE_DIR}/mavlink_indoor_sdk/${DEP2_BUILD_DIR}/libmavlink_indoor_sdk.so
     pthread
 )
 
 target_link_libraries(udp_telemetry_test
     #mavlink_indoor_sdk
-    ${PROJECT_SOURCE_DIR}/mavlink_indoor_sdk/libmavlink_indoor_sdk.so
+    ${PROJECT_SOURCE_DIR}/mavlink_indoor_sdk/${DEP2_BUILD_DIR}/libmavlink_indoor_sdk.so
     pthread
 )
 
@@ -37,9 +37,9 @@ find_package( OpenCV REQUIRED )
 
 target_link_libraries(udp_vpe_sender
     #mavlink_indoor_sdk
-    ${PROJECT_SOURCE_DIR}/mavlink_indoor_sdk/libmavlink_indoor_sdk.so
+    ${PROJECT_SOURCE_DIR}/mavlink_indoor_sdk/${DEP2_BUILD_DIR}/libmavlink_indoor_sdk.so
     pthread
-    ${PROJECT_SOURCE_DIR}/markers_lib/libmarkers_lib.so
+    ${PROJECT_SOURCE_DIR}/markers_lib/${DEP2_BUILD_DIR}/libmarkers_lib.so
     ${OpenCV_LIBS}
 )
 
