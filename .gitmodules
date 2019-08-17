@@ -7,3 +7,6 @@
 [submodule "opencv_image_transfer"]
 	path = opencv_image_transfer
 	url = https://github.com/vas59/opencv_image_transfer.git
+[submodule "led_uart_cpp"]
+	path = led_uart_cpp
+	url = https://github.com/vas59/led_uart_cpp
