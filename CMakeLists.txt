@@ -1,6 +1,9 @@
 cmake_minimum_required (VERSION 2.6)
 project (Mavilink_Indoor_SDK)
 
+add_definitions("-D_USE_MATH_DEFINES")
+add_definitions("-std=gnu++11")
+
 include_directories("./src")
 include_directories("./mavlink_indoor_sdk/mavlink/v2.0/common")
 
