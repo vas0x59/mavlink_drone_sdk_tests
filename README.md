@@ -8,7 +8,9 @@ Examples for [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
 Build and install [mavlink-router](https://github.com/intel/mavlink-router)
 
 ### Submodules
+```bash
 git submodule update --init --recursive
+```
 
 ### Build dependencies
  - [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
