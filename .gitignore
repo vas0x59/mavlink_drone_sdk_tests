@@ -13,3 +13,4 @@ Makefile
 build*/
 *.save
 !.vscode/tasks.json
+raspi_pass.txt
