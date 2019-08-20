@@ -12,3 +12,4 @@ Makefile
 *udp_vpe_sender
 build*/
 *.save
+!.vscode/tasks.json
