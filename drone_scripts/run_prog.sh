@@ -27,15 +27,18 @@ NC='\033[0m'
 
 
 ar=$(arch)
+# ar="arm"
 program="$1"
+ar_postfix=""
 
 if [ "$ar" = "x86_64" ]
 then
 LCOLOR=$LBLUE
 else 
-if [ "$ar" = "arm" ]
+if [ "$ar" = "armv7l" ]
 then
 LCOLOR=$LGREEN
+ar_postfix=" : ${LGREEN}Raspberry${LRED} PI${NC}"
 else
 LCOLOR=$ORANGE
 fi
@@ -52,7 +55,7 @@ logo="
  MMM          MM  a     a   v   v   ll   i  n      n   k   kk             $LCOLOR@   @      @    @      @@$NC
               MM  aaaaaa      v      ll  i  n      n   k     kk   $LCOLOR@@@@@@@@   @@@@@@@     @         @$NC
  
- on $LCOLOR$ar$NC
+ on $LCOLOR$ar$NC$ar_postfix
  Version $(./get_version.sh)
                                                                                      by Vasily Yuryev
                                                                                                  2019
@@ -63,7 +66,8 @@ echo "$(uname -a)"
 echo ""
 ./log.sh INFO runner START
 # ./log.sh INFO runner Starting mavlink-router
-./log.sh INFO runner "Starting Program"
+./log.sh INFO runner "Starting $program"
+echo ""
 if [ "$ar" = "x86_64" ]
 then
 ./../build/$program
