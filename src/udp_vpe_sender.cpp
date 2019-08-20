@@ -6,9 +6,9 @@
 #include <opencv2/ximgproc.hpp>
 #include <opencv2/aruco.hpp>
 
-#include "markers_lib/src/markers.h"
-#include "markers_lib/src/aruco_markers.h"
-#include "markers_lib/src/solver.h"
+#include "markers.h"
+#include "aruco_markers.h"
+#include "solver.h"
 
 using namespace markers_lib;
 using namespace mavlink_indoor_sdk;
