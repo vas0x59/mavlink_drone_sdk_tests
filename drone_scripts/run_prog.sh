@@ -27,7 +27,7 @@ NC='\033[0m'
 
 
 ar=$(arch)
-# ar="arm"
+# ar="x86"
 program="$1"
 ar_postfix=""
 
@@ -64,13 +64,37 @@ echo -e "$logo"
 
 echo "$(uname -a)"
 echo ""
-./log.sh INFO runner START
+# ./log.sh INFO runner START
 # ./log.sh INFO runner Starting mavlink-router
-./log.sh INFO runner "Starting $program"
-echo ""
+
+# echo ""
 if [ "$ar" = "x86_64" ]
 then
-./../build/$program
+    if [ -f "./../build/$program" ]
+    then
+        if [ -x "./../build/$program" ]
+        then
+            ./log.sh INFO runner "Starting $program"
+            echo ""
+            ./../build/$program
+        else
+            ./log.sh ERROR runner "File: $program - is not executable"
+        fi
+    else
+        ./log.sh ERROR runner "File: $program - not found"
+    fi
 else
-/home/pi/bin/$program
+    if [ -f "/home/pi/bin/$program" ]
+    then
+        if [ -x "/home/pi/bin/$program" ]
+        then
+            ./log.sh INFO runner "Starting $program"
+            echo ""
+            /home/pi/bin/$program
+        else
+            ./log.sh ERROR runner "File: $program - is not executable"
+        fi
+    else
+        ./log.sh ERROR runner "File: $program - not found"
+    fi
 fi
