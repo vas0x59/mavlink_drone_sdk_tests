@@ -12,14 +12,22 @@ Build and install [mavlink-router](https://github.com/intel/mavlink-router)
 git submodule update --init --recursive
 ```
 
-### Build dependencies
+## Build dependencies
  - [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
  - [markers_lib](https://github.com/vas59/markers_lib)
+```bash
+# this arch
+./build_all.sh 1 1
+# raspberry
+./build_all.sh arm 1
+```
 
 ## Build
 ```bash
-cmake .
-make
+# this arch
+./build.sh 1 1
+# raspberry
+./build.sh arm 1
 ```
 
 ## Description
