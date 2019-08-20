@@ -45,15 +45,15 @@ fi
 fi
 
 logo=" 
- MMMM          
- MMMMM        MM                  ll     i             k         
- MMM MM      MMM                   ll                  k    kk        $LCOLOR@@@@@@@@     @@@@@@      @       @$NC
- MMM  MM    MMMM                    l    i  n          k  k          $LCOLOR@            @      @    @     @@$NC
- MMM   MM  MM MM   aaaaa   v     v  l    i  nnnnnnn    kk           $LCOLOR@            @       @   @   @@$NC
- MMM    MMMM  MM        a  v     v  l    i  n      n   kk            $LCOLOR@@@@@@     @       @   @@@  $NC
- MMM          MM   aaaaaa  v     v  l    i  n      n   k kk                $LCOLOR@   @       @   @   @@ $NC
- MMM          MM  a     a   v   v   ll   i  n      n   k   kk             $LCOLOR@   @      @    @      @@$NC
-              MM  aaaaaa      v      ll  i  n      n   k     kk   $LCOLOR@@@@@@@@   @@@@@@@     @         @$NC
+ ##          
+ ##M          ##                  ##     #             #         
+ ## #        ###                   L#                  #    ##        $LCOLOR@@@@@@@@     @@@@@@      @       @$NC
+ ##  #      # ##                    #    I  #          #  #          $LCOLOR@            @      @    @     @@$NC
+ M#   #    #  M#   #####   #     V  #    I  #######    #k           $LCOLOR@            @       @   @   @@$NC
+ ##    #  #   ##        #  #     #  #    #  N      #   ##            $LCOLOR@@@@@@     @       @   @@@  $NC
+ ##     M#    ##   ##A###  V     #  #    #  #      #   # ##                $LCOLOR@   @       @   @   @@ $NC
+ ##           #M  #     #   #   #   ##   #  #      #   #   ##             $LCOLOR@   @      @    @      @@$NC
+              ##  #A####      #      #L  #  #      N   #     #k   $LCOLOR@@@@@@@@   @@@@@@@     @         @$NC
  
  on $LCOLOR$ar$NC$ar_postfix
  Version $(./get_version.sh)
