@@ -1,3 +1,19 @@
+```bash
+ 
+ MMMM          
+ MMMMM        MM                  ll     i             k         
+ MMM MM      MMM                   ll                  k    kk        @@@@@@@@     @@@@@@      @       @
+ MMM  MM    MMMM                    l    i  n          k  k          @            @      @    @     @@
+ MMM   MM  MM MM   aaaaa   v     v  l    i  nnnnnnn    kk           @            @       @   @   @@
+ MMM    MMMM  MM        a  v     v  l    i  n      n   kk            @@@@@@     @       @   @ @  
+ MMM          MM   aaaaaa  v     v  l    i  n      n   k kk                @   @       @   @@  @@ 
+ MMM          MM  a     a   v   v   ll   i  n      n   k   kk             @   @      @    @      @@
+              MM  aaaaaa      v      ll  i  n      n   k     kk   @@@@@@@@   @@@@@@@     @         @
+ 
+                                                                                     by Vasily Yuryev
+                                                                                                 2019
+```
+
 # MAVLINK SDK for indoor drones
 
 Examples for [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
