@@ -68,6 +68,30 @@ echo ""
 # ./log.sh INFO runner Starting mavlink-router
 
 # echo ""
+
+mrouter_pid=-1
+mrouter_endpoint="127.0.0.1:14540"
+
+
+
+if [ "$2" != "0" ] 
+then
+    if [ "$2" != "" ]
+    then
+        mrouter_endpoint="$2"
+    fi
+
+    ./log.sh INFO runner "Starting mavlink-routerd [$mrouter_endpoint]"
+
+    ./start_router.sh $mrouter_endpoint & mrouter_pid=$!
+    # mrouter_pid=$1
+    sleep 1
+fi
+
+# echo "mavlink-routerd_pid: $mrouter_pid"
+
+
+
 if [ "$ar" = "x86_64" ]
 then
     if [ -f "./../build/$program" ]
@@ -97,4 +121,12 @@ else
     else
         ./log.sh ERROR runner "File: $program - not found"
     fi
+fi
+
+if [ "$2" != "0" ] 
+then
+./log.sh WARN runner "Stopping mavlink-routerd [$mrouter_endpoint]"
+sleep 0.5
+# kill -s SIGKILL $mrouter_pid
+pkill mavlink-routerd
 fi
