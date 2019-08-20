@@ -21,9 +21,9 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
-add_executable(tcp_telemetry_test tcp_telemetry_test.cpp)
-add_executable(udp_telemetry_test udp_telemetry_test.cpp)
-add_executable(udp_vpe_sender udp_vpe_sender.cpp)
+add_executable(tcp_telemetry_test src/tcp_telemetry_test.cpp)
+add_executable(udp_telemetry_test src/udp_telemetry_test.cpp)
+add_executable(udp_vpe_sender src/udp_vpe_sender.cpp)
 
 # add_executable(hwer hwer.cpp)
 target_link_libraries(tcp_telemetry_test
