@@ -3,8 +3,8 @@
 host="raspberrypi.local"
 read -sp 'password: ' passvar
 echo ""
-lib_to_deploy=$(cat lib_to_deploy.txt)
-bin_to_deploy=$(cat bin_to_deploy.txt)
+lib_to_deploy=$(cat deploy_conf/lib_to_deploy.txt)
+bin_to_deploy=$(cat deploy_conf/bin_to_deploy.txt)
 echo "lib: $lib_to_deploy"
 echo "bin: $bin_to_deploy"
 
