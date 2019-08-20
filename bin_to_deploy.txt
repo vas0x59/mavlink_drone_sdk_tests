@@ -1,0 +1,1 @@
+./build_arm/tcp_telemetry_test ./build_arm/udp_telemetry_test
