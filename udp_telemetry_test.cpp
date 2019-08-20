@@ -6,7 +6,9 @@
 using namespace mavlink_indoor_sdk;
 
 int main(){
-    UDP_Protocol lw_proto("udp://127.0.0.1:14530");
+    LogInfo("", "udp_telemetry_test.cpp");
+    
+    UDP_Protocol lw_proto("udp://192.168.43.238:14530");
     lw_proto.start();
     
     autopilot_interface::AutopilotInterface ai(&lw_proto);

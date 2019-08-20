@@ -6,7 +6,9 @@
 using namespace mavlink_indoor_sdk;
 
 int main(){
-    TCP_Protocol lw_proto("tcp://127.0.0.1:5760");
+    LogInfo("", "tcp_telemetry_test.cpp");
+
+    TCP_Protocol lw_proto("tcp://192.168.43.238:5760");
     lw_proto.start();
     
     autopilot_interface::AutopilotInterface ai(&lw_proto);
