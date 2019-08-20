@@ -15,18 +15,35 @@ git submodule update --init --recursive
 ### Build dependencies
  - [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
  - [markers_lib](https://github.com/vas59/markers_lib)
+```bash
+# this arch
+./build_all.sh 1 1
+# Raspberry PI
+./build_all.sh arm 1
+```
 
 ## Build
 ```bash
-cmake .
-make
+# this arch
+./build.sh 1 1
+# Raspberry PI
+./build.sh arm 1
 ```
-
+## Deploy
+```bash
+# For Raspberry PI
+./deploy.sh
+```
 ## Description
 udp/tcp_telemtry_test.cpp - connection and commands ( telemetry ) tests\
 udp_vpe_sender.cpp - send VPE data to autopilot\
 start_router.sh - start [mavlink-router](https://github.com/intel/mavlink-router)
 
+## Run
+### On Raspberry PI
+```bash
+./run_prog.sh #program name#
+```
 ## Project repositories
  - [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk) - Mavlink Indoor SDK source
  - [markers_lib](https://github.com/vas59/markers_lib)- Library for aruco navigation
