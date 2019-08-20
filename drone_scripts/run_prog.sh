@@ -50,8 +50,8 @@ logo="
  MMM MM      MMM                   ll                  k    kk        $LCOLOR@@@@@@@@     @@@@@@      @       @$NC
  MMM  MM    MMMM                    l    i  n          k  k          $LCOLOR@            @      @    @     @@$NC
  MMM   MM  MM MM   aaaaa   v     v  l    i  nnnnnnn    kk           $LCOLOR@            @       @   @   @@$NC
- MMM    MMMM  MM        a  v     v  l    i  n      n   kk            $LCOLOR@@@@@@     @       @   @ @  $NC
- MMM          MM   aaaaaa  v     v  l    i  n      n   k kk                $LCOLOR@   @       @   @@  @@ $NC
+ MMM    MMMM  MM        a  v     v  l    i  n      n   kk            $LCOLOR@@@@@@     @       @   @@@  $NC
+ MMM          MM   aaaaaa  v     v  l    i  n      n   k kk                $LCOLOR@   @       @   @   @@ $NC
  MMM          MM  a     a   v   v   ll   i  n      n   k   kk             $LCOLOR@   @      @    @      @@$NC
               MM  aaaaaa      v      ll  i  n      n   k     kk   $LCOLOR@@@@@@@@   @@@@@@@     @         @$NC
  
