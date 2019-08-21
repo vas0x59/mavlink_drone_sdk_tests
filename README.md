@@ -72,6 +72,11 @@ start_router.sh - start [mavlink-router](https://github.com/intel/mavlink-router
 ```bash
 ./run_prog.sh #program name#
 ```
+### On Raspberry PI remotely
+```bash
+# Run on laptop
+./run_on_raspi.sh #program name# 
+```
 ## Project repositories
  - [mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk) - Mavlink Indoor SDK source
  - [markers_lib](https://github.com/vas59/markers_lib)- Library for aruco navigation
