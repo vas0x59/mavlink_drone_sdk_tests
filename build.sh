@@ -18,7 +18,7 @@ else
     then
         rm -rf build
         mkdir build
-        (cd build && cmake -D DEP2_BUILD_DIR=build -D CMAKE_BUILD_TYPE=RELEASE ..)
+        (cd build && cmake -D DEP2_BUILD_DIR=build -D CMAKE_BUILD_TYPE=DEBUG ..)
     fi
     (cd build && make)
 fi
