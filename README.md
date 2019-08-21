@@ -45,17 +45,17 @@ git submodule update --init --recursive
  - [markers_lib](https://github.com/vas59/markers_lib)
 ```bash
 # this arch
-./build_all.sh 1 1
+./build_all.sh 1 1/0 #init or just build#
 # Raspberry PI
-./build_all.sh arm 1
+./build_all.sh arm 1/0 #init or just build#
 ```
 
 ## Build
 ```bash
 # this arch
-./build.sh 1 1
+./build.sh 1 1/0 #init or just build#
 # Raspberry PI
-./build.sh arm 1
+./build.sh arm 1/0 #init or just build#
 ```
 ## Deploy
 ```bash
