@@ -15,11 +15,24 @@ LowLevel *lwproto_quit;
 
 void quit_handler(int sig);
 
-int main()
+void usage()
 {
-    LogInfo("", "tcp_telemetry_test.cpp");
+    cout << "Usage: ip:port"
+         << "\n";
+}
 
-    TCP_Protocol lw_proto("tcp://192.168.43.238:5760");
+int main(int argc, char** argv)
+{
+    if (argc <= 1)
+    {
+        LogError("", "Argumets is not correct");
+        usage();
+        return 1;
+    }
+
+    LogInfo("", "tcp_telemetry_test.cpp");
+    
+    TCP_Protocol lw_proto("tcp://" + string(argv[1]));
 
     autopilot_interface::AutopilotInterface ai(&lw_proto);
 
@@ -29,7 +42,7 @@ int main()
     lwproto_quit = &lw_proto;
     drone_quit = &drone;
 
-    signal(SIGINT,quit_handler);
+    signal(SIGINT, quit_handler);
 
     drone.start();
 

@@ -10,61 +10,71 @@
 
 using namespace mavlink_indoor_sdk;
 
-Drone *drone_quit;
-LowLevel *lwproto_quit;
+Drone *drone;
+autopilot_interface::AutopilotInterface *ai;
+LowLevel *lwproto;
 
 void quit_handler(int sig);
 
-int main()
+void usage()
 {
+    cout << "Usage: url"
+         << "\n";
+}
+int main(int argc, char **argv)
+{
+    if (argc <= 1)
+    {
+        LogError("", "Argumets is not correct");
+        usage();
+        return 1;
+    }
+
     LogInfo("", "udp_telemetry_test.cpp");
 
-    UDP_Protocol lw_proto("udp://127.0.0.1:14530");
+    lwproto = new UDP_Protocol("udp://" + string(argv[1]));
     
     // lw_proto_ = &lw_proto;
 
-    autopilot_interface::AutopilotInterface ai(&lw_proto);
+    ai = new autopilot_interface::AutopilotInterface(lwproto);
 
-    Drone drone(&ai);
-    lw_proto.start();
+    drone = new Drone(ai);
+    lwproto->start();
 
-    lwproto_quit = &lw_proto;
-    drone_quit = &drone;
+    // lwproto_quit = &lw_proto;
+    // drone_quit = &drone;
 
-    signal(SIGINT,quit_handler);
+    signal(SIGINT, quit_handler);
 
-    
-    drone.start();
+    drone->start();
     // ai.system_id = 1;
-    drone.arm();
-    // drone.takeoff(1.5, 0.5);
-    drone.set_position({0, 0, 2, 0}, FRAME_LOCAL);
-    drone.sleep(3000);
-    // drone.navigate_wait({0, 0, 2, 0}, FRAME_LOCAL, 0.5);
-    // drone.sleep(3000);
+    drone->arm();
+    // drone->takeoff(1.5, 0.5);
+    drone->set_position({0, 0, 2, 0}, FRAME_LOCAL);
+    drone->sleep(3000);
 
-    drone.navigate_wait({2, 0, 2, 0}, FRAME_LOCAL, 0.5);
+    drone->navigate_wait({2, 0, 2, 0}, FRAME_LOCAL, 0.5);
 
-    drone.sleep(3000);
+    drone->sleep(3000);
 
-    drone.navigate_wait({-2, 0, 2, 0}, FRAME_LOCAL, 0.5);
+    drone->navigate_wait({-2, 0, 2, 0}, FRAME_LOCAL, 0.5);
 
-    drone.sleep(3000);
+    drone->sleep(3000);
 
-    drone.navigate_wait({0, 0, 2, 1.57}, FRAME_LOCAL, 0.5);
-    // drone.set_position({0, 0, 2, 1.57}, FRAME_LOCAL);
-    drone.sleep(3000);
-    // drone.arm();
-    // drone.takeoff(1.5, 0.5);
+    drone->navigate_wait({0, 0, 2, 1.57}, FRAME_LOCAL, 0.5);
+    // drone->set_position({0, 0, 2, 1.57}, FRAME_LOCAL);
+    drone->sleep(3000);
+    // drone->arm();
+    // drone->takeoff(1.5, 0.5);
 
-    // drone.navigate({0, 0, 2, 0}, FRAME_VISION, 0.5);
+    // drone->navigate({0, 0, 2, 0}, FRAME_VISION, 0.5);
 
-    drone.land();
-    // drone.sleep(5000);
-    // drone.disarm();
+    drone->land();
+    // drone->sleep(5000);
+    // drone->disarm();
 
-    drone.stop();
-    lw_proto.stop();
+    drone->stop();
+    lwproto->stop();
 }
 
 void quit_handler(int sig)
@@ -73,14 +83,14 @@ void quit_handler(int sig)
     // autopilot interface
     try
     {
-        drone_quit->handle_quit(sig);
+        drone->handle_quit(sig);
     }
     catch (int error)
     {
     }
     try
     {
-        lwproto_quit->handle_quit(sig);
+        lwproto->handle_quit(sig);
     }
     catch (int error)
     {
