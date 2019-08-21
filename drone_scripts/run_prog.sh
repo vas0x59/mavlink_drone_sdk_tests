@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 # echo ""
 
 
 # Mavlink SDK
-
+# echo $$
+export LD_LIBRARY_PATH=/home/pi/lib 
 
 GREEN='\033[0;32m'
 LGREEN='\033[1;32m'
@@ -60,7 +61,7 @@ logo="
                                                                                      by Vasily Yuryev
                                                                                                  2019
 "
-echo -e "$logo"
+echo "$logo"
 
 echo "$(uname -a)"
 echo ""
@@ -100,7 +101,7 @@ then
         then
             ./log.sh INFO runner "Starting $program"
             echo ""
-            ./../build/$program
+            ./../build/$program 
         else
             ./log.sh ERROR runner "File: $program - is not executable"
         fi
@@ -115,6 +116,7 @@ else
             ./log.sh INFO runner "Starting $program"
             echo ""
             /home/pi/bin/$program
+            # echo $!
         else
             ./log.sh ERROR runner "File: $program - is not executable"
         fi
