@@ -30,6 +30,8 @@ NC='\033[0m'
 ar=$(arch)
 # ar="x86"
 program="$1"
+ip_port="127.0.0.1:14540"
+
 ar_postfix=""
 
 if [ "$ar" = "x86_64" ]
@@ -99,9 +101,10 @@ then
     then
         if [ -x "./../build/$program" ]
         then
+            ip_port=$(cat ./../configs/$program.txt)
             ./log.sh INFO runner "Starting $program"
             echo ""
-            ./../build/$program 
+            ./../build/$program $ip_port
         else
             ./log.sh ERROR runner "File: $program - is not executable"
         fi
@@ -113,9 +116,10 @@ else
     then
         if [ -x "/home/pi/bin/$program" ]
         then
+            ip_port=$(cat /home/pi/configs/$program.txt)
             ./log.sh INFO runner "Starting $program"
             echo ""
-            /home/pi/bin/$program
+            /home/pi/bin/$program $ip_port
             # echo $!
         else
             ./log.sh ERROR runner "File: $program - is not executable"
