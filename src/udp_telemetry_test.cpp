@@ -3,19 +3,38 @@
 #include "tcp.h"
 #include "udp.h"
 
+#include <signal.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+
 using namespace mavlink_indoor_sdk;
 
-int main(){
+Drone *drone_quit;
+LowLevel *lwproto_quit;
+
+void quit_handler(int sig);
+
+int main()
+{
     LogInfo("", "udp_telemetry_test.cpp");
-    
+
     UDP_Protocol lw_proto("udp://127.0.0.1:14530");
-    lw_proto.start();
     
+    // lw_proto_ = &lw_proto;
+
     autopilot_interface::AutopilotInterface ai(&lw_proto);
 
     Drone drone(&ai);
-    drone.start();
+    lw_proto.start();
 
+    lwproto_quit = &lw_proto;
+    drone_quit = &drone;
+
+    signal(SIGINT,quit_handler);
+
+    
+    drone.start();
     // ai.system_id = 1;
     drone.arm();
     // drone.takeoff(1.5, 0.5);
@@ -25,11 +44,11 @@ int main(){
     // drone.sleep(3000);
 
     drone.navigate_wait({2, 0, 2, 0}, FRAME_LOCAL, 0.5);
-    
+
     drone.sleep(3000);
 
     drone.navigate_wait({-2, 0, 2, 0}, FRAME_LOCAL, 0.5);
-    
+
     drone.sleep(3000);
 
     drone.navigate_wait({0, 0, 2, 1.57}, FRAME_LOCAL, 0.5);
@@ -46,4 +65,26 @@ int main(){
 
     drone.stop();
     lw_proto.stop();
+}
+
+void quit_handler(int sig)
+{
+    LogWarn("", "TERMINATING AT USER REQUEST");
+    // autopilot interface
+    try
+    {
+        drone_quit->handle_quit(sig);
+    }
+    catch (int error)
+    {
+    }
+    try
+    {
+        lwproto_quit->handle_quit(sig);
+    }
+    catch (int error)
+    {
+    }
+
+    exit(0);
 }
