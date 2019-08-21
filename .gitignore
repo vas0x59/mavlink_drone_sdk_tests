@@ -1,4 +1,3 @@
-.vscode
 .vscode/*
 CMakeFiles/*
 *.so
@@ -13,4 +12,5 @@ Makefile
 build*/
 *.save
 !.vscode/tasks.json
+!.vscode/launch.json
 raspi_pass.txt
