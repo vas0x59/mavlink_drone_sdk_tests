@@ -5,7 +5,7 @@
 
 # Mavlink SDK
 # echo $$
-export LD_LIBRARY_PATH=/home/pi/lib 
+
 
 GREEN='\033[0;32m'
 LGREEN='\033[1;32m'
@@ -36,15 +36,23 @@ ar_postfix=""
 
 if [ "$ar" = "x86_64" ]
 then
-LCOLOR=$LBLUE
+    LCOLOR=$LBLUE
 else 
-if [ "$ar" = "armv7l" ]
-then
-LCOLOR=$LGREEN
-ar_postfix=" : ${LGREEN}Raspberry${LRED} PI${NC}"
-else
-LCOLOR=$ORANGE
-fi
+    if [ "$ar" = "armv7l" ]
+    then
+        LCOLOR=$LGREEN
+        ar_postfix=" : ${LGREEN}Raspberry${LRED} PI${NC}"
+        export LD_LIBRARY_PATH=/home/pi/lib 
+    else
+        if [ "$ar" = "armv6l" ]
+        then
+            LCOLOR=$LPURPLE
+            ar_postfix=" : ${LPURPLE}Raspberry${LRED} PI Zero${NC}"
+            export LD_LIBRARY_PATH=/home/pi/lib 
+        else
+        LCOLOR=$ORANGE
+        fi
+    fi
 fi
 
 logo=" 
