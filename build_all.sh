@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-for var in mavlink_indoor_sdk markers_lib led_uart_cpp
+for var in mavlink_indoor_sdk markers_lib led_uart_cpp opencv_image_transfer
 do
     echo "./$var"
     (cd "./$var" && ./build.sh $1 $2)
