@@ -6,16 +6,27 @@
 #include <opencv2/ximgproc.hpp>
 #include <opencv2/aruco.hpp>
 
+#include "image_sender.h"
+
+#include <iostream>
+#include <unistd.h>
+#include <sys/time.h>
+
 #include "markers.h"
 #include "aruco_markers.h"
 #include "solver.h"
 
 using namespace markers_lib;
 using namespace mavlink_indoor_sdk;
+using namespace opencv_image_transfer;
+
 
 ArucoMarkersDetector aruco_detector;
 Solver solver;
+ImgSender sender;
 
+uint64_t prev_t = 0;
+uint64_t INTERVAL =  1000 / 4;
 // Config
 string calibration_file = "./log.yml";
 string map_url = "./map.txt";
@@ -32,6 +43,7 @@ struct VisionData
 
 VisionData process_img(Mat img)
 {
+
     Mat viz;
     img.copyTo(viz);
     VisionData vd;
@@ -42,7 +54,12 @@ VisionData process_img(Mat img)
     // cout << objPoints << "img: " << imgPoints << "\n";
     // Pose pose;
     vd.success = solver.solve(objPoints, imgPoints, vd.pose, viz);
-    imshow("Viz", viz);
+    
+    if ((get_time_msec() - prev_t) >= INTERVAL){
+        sender.send_img(viz);
+        prev_t = get_time_msec();
+    }
+    // imshow("Viz", viz);
     return vd;
 }
 
@@ -59,6 +76,10 @@ void load_config()
     fs2["dictinary"] >> dictinary;
     fs2["cam_id"] >> cam_id;
     fs2.release();
+
+    string cp = "config/config.yml";
+    sender.load_config(cp);
+    sender.open();
 }
 
 void init_marker_reg()
