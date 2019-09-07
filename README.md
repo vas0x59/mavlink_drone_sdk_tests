@@ -87,5 +87,6 @@ start_router.sh - start [mavlink-router](https://github.com/intel/mavlink-router
  - [PX4 Firmware](https://github.com/vas59/PX4_Firmware) - version of px4 for Spurk
  - [ESP32 mqtt swarm control](https://github.com/vas59/mavlink_indoor_sdk_esp32_test1) - ESP32 version of [vas59/mavlink_indoor_sdk](https://github.com/vas59/mavlink_indoor_sdk)
  - [Prebuilt for Raspberry PI](https://github.com/vas59/raspberrypi_prebuilt/releases) - Opencv 4.1.0 and mavlink-router
+ - [Camera calibration files](https://github.com/vas59/camera_calibration)
 ***
 by Vasily Yuryev
