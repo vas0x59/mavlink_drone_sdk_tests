@@ -1,2 +1,1 @@
-./build_arm/tcp_telemetry_test ./build_arm/udp_telemetry_test
-./markers_lib/build_arm/test_cam
+./build_arm/tcp_telemetry_test ./build_arm/udp_telemetry_test ./build_arm/udp_vpe_sender

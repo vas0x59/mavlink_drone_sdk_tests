@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-using namespace mavlink_indoor_sdk;
+using namespace mavlink_drone_sdk;
 
 Drone *drone;
 autopilot_interface::AutopilotInterface *ai;
@@ -22,20 +22,6 @@ void usage()
          << "\n";
 }
 
-void circle(float radius, PointXYZ centre, PointXYZ start, Frame frame, float part = 2 * M_PI, int res = 10)
-{
-
-    for (float i = 0; i <= res; i++)
-    {
-        float p = (i / res) * part;
-        // float
-        PointXYZ now = centre + PointXYZ(cosf(p) * radius, sinf(p) * radius, 0);
-        LogInfo("CIRCLE", now.ToString());
-        drone->navigate_wait({now.x, now.y, now.z, 0}, frame, 0.5);
-        // drone->sleep(500);
-    }
-    LogInfo("CIRCLE", "Done");
-}
 
 int main(int argc, char **argv)
 {
@@ -53,7 +39,7 @@ int main(int argc, char **argv)
     // lw_proto_ = &lw_proto;
 
     ai = new autopilot_interface::AutopilotInterface(lwproto);
-
+    ai->wait_for_init_pose = false;
     drone = new Drone(ai);
     lwproto->start();
 
@@ -63,43 +49,12 @@ int main(int argc, char **argv)
     signal(SIGINT, quit_handler);
 
     drone->start();
-    // ai.system_id = 1;
-    drone->arm();
-    drone->takeoff(1.5, 0.5);
-    // drone->set_position({0, 0, 2, 0}, FRAME_LOCAL);
-    drone->sleep(3000);
-    // drone->navigate_wait({0, 0.5, 250, 0}, FRAME_LOCAL, 5, 0.5);
-    // drone->sleep(3000);
-    // drone->navigate_wait({0.5, 0.5, 1.5, 0}, FRAME_LOCAL, 0.3, 0.05);
-    // drone->sleep(3000);
-    // drone->disarm();
-    // drone->sleep(1000);
-    // drone->arm();
-    // drone->set_position({0, 0, 1, 0}, FRAME_LOCAL);
-    // drone->land();
-    drone->navigate_wait({0, 0, 2, 0}, FRAME_LOCAL, 0.5);
-    // drone->sleep(3000);
-    circle(10, {0, 0, 2}, {0, 0, 2}, FRAME_LOCAL);
-
-    // drone->navigate_wait({2, 0, 2, 0}, FRAME_LOCAL, 0.5);
-
-    // drone->sleep(3000);
-
-    // drone->navigate_wait({-2, 0, 2, 0}, FRAME_LOCAL, 0.5);
-
-    // drone->sleep(3000);
-
-    // drone->navigate_wait({0, 0, 2, 1.57}, FRAME_LOCAL, 0.5);
-    // // drone->set_position({0, 0, 2, 1.57}, FRAME_LOCAL);
-    // drone->sleep(3000);
-    // drone->arm();
-    // drone->takeoff(1.5, 0.5);
-
-    drone->navigate({0, 0, 2, 0}, FRAME_VISION, 0.5);
-    drone->sleep(5000);
-    drone->land();
-    drone->sleep(5000);
-    drone->disarm();
+    
+    while (true){
+        LogInfo("BODY", drone->get_telemetry(FRAME_BODY).ToString());
+        LogInfo("VISION", drone->get_telemetry(FRAME_VISION).ToString());
+        drone->sleep(333);
+    }
 
     drone->stop();
     lwproto->stop();

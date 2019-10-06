@@ -1,1 +1,1 @@
-./mavlink_indoor_sdk/build_arm/libmavlink_indoor_sdk.so ./markers_lib/build_arm/libmarkers_lib.so
+./mavlink_drone_sdk/build_arm/libmavlink_drone_sdk.so ./markers_lib/build_arm/libmarkers_lib.so

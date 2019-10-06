@@ -1,10 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 # echo ""
 
 
 # Mavlink SDK
-# echo $$
 
 
 GREEN='\033[0;32m'
@@ -30,48 +29,38 @@ NC='\033[0m'
 ar=$(arch)
 # ar="x86"
 program="$1"
-ip_port="127.0.0.1:14540"
-
 ar_postfix=""
 
 if [ "$ar" = "x86_64" ]
 then
-    LCOLOR=$LBLUE
+LCOLOR=$LBLUE
 else 
-    if [ "$ar" = "armv7l" ]
-    then
-        LCOLOR=$LGREEN
-        ar_postfix=" : ${LGREEN}Raspberry${LRED} PI${NC}"
-        export LD_LIBRARY_PATH=/home/pi/lib 
-    else
-        if [ "$ar" = "armv6l" ]
-        then
-            LCOLOR=$LPURPLE
-            ar_postfix=" : ${LPURPLE}Raspberry${LRED} PI Zero${NC}"
-            export LD_LIBRARY_PATH=/home/pi/lib 
-        else
-        LCOLOR=$ORANGE
-        fi
-    fi
+if [ "$ar" = "armv7l" ]
+then
+LCOLOR=$LGREEN
+ar_postfix=" : ${LGREEN}Raspberry${LRED} PI${NC}"
+else
+LCOLOR=$ORANGE
+fi
 fi
 
 logo=" 
- ##          
- ##M          ##                  ##     #             #         
- ## #        ###                   L#                  #    ##        $LCOLOR@@@@@@@@     @@@@@@      @       @$NC
- ##  #      # ##                    #    I  #          #  #          $LCOLOR@            @      @    @     @@$NC
- M#   #    #  M#   #####   #     V  #    I  #######    #k           $LCOLOR@            @       @   @   @@$NC
- ##    #  #   ##        #  #     #  #    #  N      #   ##            $LCOLOR@@@@@@     @       @   @@@  $NC
- ##     M#    ##   ##A###  V     #  #    #  #      #   # ##                $LCOLOR@   @       @   @   @@ $NC
- ##           #M  #     #   #   #   ##   #  #      #   #   ##             $LCOLOR@   @      @    @      @@$NC
-              ##  #A####      #      #L  #  #      N   #     #k   $LCOLOR@@@@@@@@   @@@@@@@     @         @$NC
+           
+ ##          ##                  ##     #             #         
+ ###        ###                   ##                  #    ##        $LCOLOR@@@@@@@@     @@@@@@      @       @$NC
+ ## #      # ##                    #    #  #          #  #          $LCOLOR@            @      @    @     @@$NC
+ ##  #    #  ##   #####   #     #  #    #  #######    ##           $LCOLOR@            @       @   @   @@$NC
+ ##   #  #   ##        #  #     #  #    #  #      #   ##            $LCOLOR@@@@@@     @       @   @@@  $NC
+ ##    ##    ##   ######  #     #  #    #  #      #   # ##                $LCOLOR@   @       @   @   @@ $NC
+ ##          ##  #     #   #   #   ##   #  #      #   #   ##             $LCOLOR@   @      @    @      @@$NC
+ ##          ##  ######      #      ##  #  #      #   #     ##   $LCOLOR@@@@@@@@   @@@@@@@     @         @$NC
  
  on $LCOLOR$ar$NC$ar_postfix
  Version $(./get_version.sh)
                                                                                      by Vasily Yuryev
                                                                                                  2019
 "
-echo "$logo"
+echo -e "$logo"
 
 echo "$(uname -a)"
 echo ""
@@ -93,12 +82,8 @@ then
     fi
 
     ./log.sh INFO runner "Starting mavlink-routerd [$mrouter_endpoint]"
-    if [ "$1" = "armv7l" ]
-    then 
-        sudo ./start_router.sh $mrouter_endpoint & mrouter_pid=$!
-    else
-        ./start_router.sh $mrouter_endpoint & mrouter_pid=$!
-    fi
+
+    ./start_router.sh $mrouter_endpoint & mrouter_pid=$!
     # mrouter_pid=$1
     sleep 1
 fi
@@ -113,10 +98,9 @@ then
     then
         if [ -x "./../build/$program" ]
         then
-            ip_port=$(cat ./../configs/$program.txt)
             ./log.sh INFO runner "Starting $program"
             echo ""
-            ./../build/$program $ip_port
+            ./../build/$program
         else
             ./log.sh ERROR runner "File: $program - is not executable"
         fi
@@ -128,11 +112,9 @@ else
     then
         if [ -x "/home/pi/bin/$program" ]
         then
-            ip_port=$(cat /home/pi/configs/$program.txt)
             ./log.sh INFO runner "Starting $program"
             echo ""
-            /home/pi/bin/$program $ip_port
-            # echo $!
+            /home/pi/bin/$program
         else
             ./log.sh ERROR runner "File: $program - is not executable"
         fi

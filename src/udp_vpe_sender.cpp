@@ -6,7 +6,7 @@
 #include <opencv2/ximgproc.hpp>
 #include <opencv2/aruco.hpp>
 
-#include "image_sender.h"
+// #include "image_sender.h"
 
 #include <iostream>
 #include <unistd.h>
@@ -17,13 +17,13 @@
 #include "solver.h"
 
 using namespace markers_lib;
-using namespace mavlink_indoor_sdk;
-using namespace opencv_image_transfer;
+using namespace mavlink_drone_sdk;
+// using namespace opencv_image_transfer;
 
 
 ArucoMarkersDetector aruco_detector;
 Solver solver;
-ImgSender sender;
+// ImgSender sender;
 
 uint64_t prev_t = 0;
 uint64_t INTERVAL =  1000 / 4;
@@ -33,13 +33,20 @@ string map_url = "./map.txt";
 string map_jpeg = "./map.jpg";
 int map_jpeg_size = 1000;
 int dictinary = 3;
-int cam_id = 2;
-
+int cam_id = 0;
+int image_width = 320;
+int image_height = 240;
 struct VisionData
 {
     Pose pose;
     bool success;
+    string ToString();
 };
+
+string VisionData::ToString()
+{
+    return string_pose(pose) + " success: " + to_string(success);
+}
 
 VisionData process_img(Mat img)
 {
@@ -56,7 +63,7 @@ VisionData process_img(Mat img)
     vd.success = solver.solve(objPoints, imgPoints, vd.pose, viz);
     
     if ((get_time_msec() - prev_t) >= INTERVAL){
-        sender.send_img(viz);
+        // sender.send_img(viz);
         prev_t = get_time_msec();
     }
     // imshow("Viz", viz);
@@ -78,8 +85,8 @@ void load_config()
     fs2.release();
 
     string cp = "config/config.yml";
-    sender.load_config(cp);
-    sender.open();
+    // sender.load_config(cp);
+    // sender.open();
 }
 
 void init_marker_reg()
@@ -109,6 +116,8 @@ int main()
     lw_proto->start();
 
     VideoCapture cap(cam_id);
+    cap.set(CAP_PROP_FRAME_WIDTH, image_width);
+    cap.set(CAP_PROP_FRAME_HEIGHT, image_height);
     while (true)
     {
         if (lw_proto->status == 1)
@@ -118,7 +127,7 @@ int main()
             Mat frame;
             cap >> frame;
             VisionData vd = process_img(frame);
-
+            LogInfo("vision", vd.ToString());
             vpe.usec = get_time_usec();
             vpe.x = vd.pose.pose.x;
             vpe.y = vd.pose.pose.y;
@@ -128,7 +137,7 @@ int main()
             vpe.pitch = vd.pose.rotation.x;
             vpe.yaw = vd.pose.rotation.z;
 
-            mavlink_msg_vision_position_estimate_encode(12, MAV_COMP_ID_ALL, &msg, &vpe);
+            mavlink_msg_vision_position_estimate_encode(2, MAV_COMP_ID_ALL, &msg, &vpe);
             lw_proto->write_message(msg);
             usleep(10000);
         }

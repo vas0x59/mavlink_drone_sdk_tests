@@ -1,0 +1,9 @@
+%YAML:1.0
+---
+calibration_file: "../configs/log.yml"
+connection_url: "udp://127.0.0.1:14520"
+map: "../maps/map.txt"
+map_jpeg: "aruco.png"
+map_jpeg_size: 1000
+dictinary: 3
+cam_id: 2
