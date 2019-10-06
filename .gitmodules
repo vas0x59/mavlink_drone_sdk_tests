@@ -7,3 +7,6 @@
 [submodule "led_uart_cpp"]
 	path = led_uart_cpp
 	url = https://github.com/vas59/led_uart_cpp
+[submodule "mavlink_drone_sdk"]
+	path = mavlink_drone_sdk
+	url = https://github.com/vas59/mavlink_drone_sdk.git
