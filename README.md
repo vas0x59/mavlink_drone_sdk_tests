@@ -11,7 +11,7 @@
               MM  aaaaaa      v      ll  i  n      n   k     kk   @@@@@@@@   @@@@@@@     @         @
  
                                                                                      by Vasily Yuryev
-                                                                                                 2019
+                                                                                                 2020
  ##          
  ##M          ##                  ##     #             #         
  ## #        ###                   L#                  #    ##        @@@@@@@@     @@@@@@      @       @
@@ -23,7 +23,7 @@
               ##  #A####      #      #L  #  #      N   #     #k   @@@@@@@@   @@@@@@@     @         @
               
                                                                                      by Vasily Yuryev
-                                                                                                 2019
+                                                                                                 2020
 ```
 
 # MAVLINK SDK for indoor drones
