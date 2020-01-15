@@ -69,7 +69,7 @@ logo="
  on $LCOLOR$ar$NC$ar_postfix
  Version $(./get_version.sh)
                                                                                      by Vasily Yuryev
-                                                                                                 2019
+                                                                                                 2020
 "
 echo "$logo"
 
